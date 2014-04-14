@@ -612,6 +612,10 @@ function _configure_neutron_common {
     if [ "$LOG_COLOR" == "True" ] && [ "$SYSLOG" == "False" ]; then
         setup_colorized_logging $NEUTRON_CONF DEFAULT project_id
     fi
+    # configure rabbit host
+    iniset $NEUTRON_CONF DEFAULT rabbit_host $RABBIT_HOST
+    iniset $NEUTRON_CONF DEFAULT rabbit_userid $RABBIT_USER
+    iniset $NEUTRON_CONF DEFAULT rabbit_password $RABBIT_PASSWORD
 
     _neutron_setup_rootwrap
 }
